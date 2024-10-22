@@ -3,172 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - PhD Student</title>
+    <title>Academic Portfolio</title>
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --background-color: #ecf0f1;
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f5f6fa;
+            --text-color: #2c3e50;
         }
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--secondary-color);
-            background-color: var(--background-color);
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Main Content */
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
         }
-        header {
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .publications-list {
+            list-style: none;
+        }
+
+        .publications-list li {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
             background-color: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-        }
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            margin-bottom: 1rem;
-        }
-        .section {
-            margin-bottom: 2rem;
             padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
+            margin-top: 2rem;
         }
-        .section:hover {
-            transform: translateY(-5px);
-        }
-        .research-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 1rem auto;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .publication {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background-color: white;
-            border-left: 4px solid var(--primary-color);
-            transition: background-color 0.3s ease;
-        }
-        .publication:hover {
-            background-color: #e3f2fd;
-        }
-        .contact-info {
+
+        .social-links {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
         }
-        .contact-item {
-            margin: 0.5rem;
-            padding: 0.5rem;
-            background-color: var(--primary-color);
+
+        .social-links a {
             color: white;
-            border-radius: 5px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
         }
-        .contact-item:hover {
-            background-color: var(--secondary-color);
-        }
-        #publicationCount {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        #currentYear {
-            font-style: italic;
+
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="/api/placeholder/150/150" alt="John Doe" class="profile-image">
-            <h1>John Doe</h1>
-            <p>PhD Student in Computer Science</p>
-        </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+        </ul>
+    </nav>
 
-        <main>
-            <section class="section">
-                <h2>About Me</h2>
-                <p>I am a PhD student in Computer Science at XYZ University, focusing on machine learning and artificial intelligence. My research interests include deep learning, natural language processing, and computer vision.</p>
-            </section>
-
-            <section class="section">
-                <h2>Research</h2>
-                <p>My current research project involves developing novel algorithms for efficient large language model training. I'm particularly interested in exploring ways to reduce computational resources while maintaining model performance.</p>
-                <img src="/api/placeholder/600/400" alt="Research Diagram" class="research-image">
-            </section>
-
-            <section class="section">
-                <h2>Publications</h2>
-                <p>Total publications: <span id="publicationCount"></span></p>
-                <div id="publications">
-                    <div class="publication">
-                        <p>Doe, J., Smith, A. (2023). "Efficient Training Strategies for Large Language Models." In Proceedings of the International Conference on Machine Learning (ICML 2023).</p>
-                    </div>
-                    <div class="publication">
-                        <p>Doe, J., Johnson, B., Lee, C. (2022). "A Survey of Recent Advancements in Natural Language Processing." Journal of Artificial Intelligence Research, Vol. 75, pp. 1-30.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Contact</h2>
-                <div class="contact-info">
-                    <a href="mailto:john.doe@university.edu" class="contact-item">Email</a>
-                    <a href="https://github.com/johndoe" class="contact-item">GitHub</a>
-                    <a href="https://www.linkedin.com/in/johndoe" class="contact-item">LinkedIn</a>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; <span id="currentYear"></span> John Doe. All rights reserved.</p>
-        </footer>
+    <!-- Home Section -->
+    <div class="container" id="home">
+        <section class="profile-section">
+            <img src="/api/placeholder/200/200" alt="Profile Picture" class="profile-image">
+            <div class="profile-content">
+                <h1>[Your Name]</h1>
+                <p>PhD Researcher in Wireless Communications</p>
+                <p>[University Name]</p>
+                <p>[Brief introduction about your research focus and interests]</p>
+            </div>
+        </section>
     </div>
 
-    <script>
-        // Count publications
-        function countPublications() {
-            const publications = document.querySelectorAll('.publication');
-            document.getElementById('publicationCount').textContent = publications.length;
-        }
+    <!-- About Section -->
+    <div class="container" id="about">
+        <section>
+            <h2>About Me</h2>
+            <p>[Your academic biography]</p>
+            <h3>Technical Skills</h3>
+            <ul>
+                <li>Wireless Communications Technologies</li>
+                <li>Programming Languages</li>
+                <li>Simulation Platforms</li>
+                <li>Hardware Experience</li>
+            </ul>
+        </section>
+    </div>
 
-        // Update current year
-        function updateYear() {
-            const year = new Date().getFullYear();
-            document.getElementById('currentYear').textContent = year;
-        }
+    <!-- Research Section -->
+    <div class="container" id="research">
+        <section>
+            <h2>Research</h2>
+            <div class="research-grid">
+                <div class="research-item">
+                    <h3>Current Research</h3>
+                    <p>[Description of your current research project]</p>
+                </div>
+                <div class="research-item">
+                    <h3>Research Interests</h3>
+                    <p>[List of your research interests]</p>
+                </div>
+                <div class="research-item">
+                    <h3>Patents</h3>
+                    <p>Inventor of "Hybrid Device and Network for a Wireless-System" (PCT in progress)</p>
+                </div>
+            </div>
+        </section>
+    </div>
 
-        // Run functions when the page loads
-        window.onload = function() {
-            countPublications();
-            updateYear();
-        };
-    </script>
+    <!-- Publications Section -->
+    <div class="container" id="publications">
+        <section>
+            <h2>Publications</h2>
+            <ul class="publications-list">
+                <li>
+                    <strong>Title of Publication 1</strong><br>
+                    Authors: [Author list]<br>
+                    Journal/Conference: [Name], [Year]
+                </li>
+                <li>
+                    <strong>Title of Publication 2</strong><br>
+                    Authors: [Author list]<br>
+                    Journal/Conference: [Name], [Year]
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 [Your Name]. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/[your-username]">GitHub</a>
+            <a href="https://linkedin.com/in/[your-profile]">LinkedIn</a>
+            <a href="mailto:[your-email]">Email</a>
+        </div>
+    </footer>
 </body>
 </html>
